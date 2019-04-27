@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "milligram";
 
 export default {
   data(){
