@@ -1,36 +1,37 @@
 <template>
  <div id="app">
     <div v-if="loginPage == false">
-      Zalogowano {{email}}
-      <button @click="login()">Wroc</button>
+      <label>Zalogowano {{email}}</label>
+      <button @click="loginSite()">Wroc</button>
     </div>
     <div v-else>
-      <h1>LOGOWANIE</h1>
-      Zaloguj sie:
-      <input type="text" v-model="email">
-
-      <button @click="login()">Zaloguj</button>
+      <login-form @login="logMeIn($event)"></login-form>
     </div>
   </div>
 </template>
 
 <script>
 import "milligram";
+import LoginForm from "./LoginForm";
 
 export default {
+  components: {LoginForm},
   data(){
 	  return {
-		  email: "baaartek@onet.pl",
-		  loginPage: true
+		  loginPage: true,
+		  email: "baaartek@onet.pl"
 	  };
   },
   methods: {
-	  login(){
-		  this.loginPage = this.loginPage === false;
-	  }
-  }
-  
-}
+	  loginSite(){
+		  this.loginPage = true;
+	  },
+	  logMeIn(username) {
+		  this.email = username;
+		  this.loginPage = false;
+		}
+  } 
+};
 </script>
 
 <style>
